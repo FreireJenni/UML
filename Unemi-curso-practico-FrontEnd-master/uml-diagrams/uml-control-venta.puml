@@ -1,0 +1,40 @@
+@startuml
+
+class Producto{
+    codigo: string
+    tipo: TipoProducto
+    stockdisponible: integer
+    stockminimo: integer
+    precio: numeric
+    proveedor: Proveedor
+}
+
+class Cliente{
+    cedula: string
+    nombres: string
+    telefono: string
+    direccion: string
+}
+
+class Venta{
+    numero: string
+    fecha: date
+    cliente: Cliente
+    subtotal: numeric
+    impuesto: numeric
+    total: numeric
+}
+
+class Items{
+    producto: Producto
+    cantidad: integer
+    precioFinal: numeric
+    totalItem: numeric
+}
+
+Venta --> Cliente
+Venta "1" o-- "1..*" Items
+Items --> Producto
+
+
+@enduml
